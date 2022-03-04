@@ -2,6 +2,7 @@ package kr.co.soft.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -12,11 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.soft.beans.UserBean;
+import kr.co.soft.service.UserService;
 import kr.co.soft.validator.UserValidator;
 
 @RequestMapping("/user")
 @Controller
 public class UserController {
+	
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("/login")
 	public String login() {
@@ -35,6 +40,9 @@ public class UserController {
 		if (result.hasErrors()) { // 유효성 검사를 통하가지 못하게 된다면
 			return "user/join";
 		}
+		
+		userService.addUserInfo(joinUserBean);
+		
 		return "user/join_success";
 	}
 

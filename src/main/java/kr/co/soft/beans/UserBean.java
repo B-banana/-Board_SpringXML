@@ -27,4 +27,13 @@ public class UserBean {
 	@Size(min = 4, max = 8)
 	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String user_pw2;
+	
+	private boolean userIdExist;
+	
+	//최초에 회원 가입시 중복검사를 하지 않을것이므로 false
+	public UserBean() {
+		this.userIdExist = false;
+	}
+	
+	
 }
