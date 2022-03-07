@@ -29,10 +29,12 @@ public class UserBean {
 	private String user_pw2;
 	
 	private boolean userIdExist;
+	private boolean userLogin;
 	
 	//최초에 회원 가입시 중복검사를 하지 않을것이므로 false
 	public UserBean() {
 		this.userIdExist = false;
+		this.userLogin = false;
 	}
 	
 	
